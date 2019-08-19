@@ -1,8 +1,9 @@
 import React from 'react';
 import CommentItem from './comment-item';
+import { connect } from "react-redux";
 
-const CommentsList = (props) => {
-	const { comments, remove } = props;
+let CommentsList = (props) => {
+	const { comments, removeComment } = props;
 	return (<ul>
 		{
 			comments.map((comment) => {
@@ -14,7 +15,7 @@ const CommentsList = (props) => {
 						author = { author }
 						text = { text }
 						date = { date }							
-						remove = { remove }
+						removeComment = { removeComment }
 				/>
 				)
 			})

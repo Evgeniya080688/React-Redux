@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from "react-redux";
 
-const CommentForm = (props) => {
+let CommentForm = (props) => {
 	const { newAuthor, newComment, addNewComment, changeElForm } = props;
 
 	return (
@@ -11,7 +12,7 @@ const CommentForm = (props) => {
 				name="newAuthor"
 				required
 				placeholder = "Введите имя"
-				value = {newAuthor}
+				value = { newAuthor }
 				onChange = { changeElForm }
 				
 			/>
@@ -21,11 +22,11 @@ const CommentForm = (props) => {
 				rows = "10" 
 				cols = "45" 
 				name = "newComment"
-				value = {newComment}
+				value = { newComment }
 				onChange = { changeElForm }
 				
 			>
-				{newComment}			  
+				{ newComment }			  
 			</textarea>					
 
 			<input		

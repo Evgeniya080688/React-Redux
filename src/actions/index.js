@@ -1,9 +1,9 @@
-import { createId, getDate, isEmptyString } from './utils.js';
+import { createId, getDate } from './utils.js';
 
 
-export const remove = (id) => {
+export const removeComment = (id) => {
 	return {
-		type: 'REMOVE',
+		type: 'REMOVE_COMMENT',
 		id
 	}
 }

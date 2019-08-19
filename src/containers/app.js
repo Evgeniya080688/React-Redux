@@ -2,19 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import CommentForm from '../components/comment-form.js';
-import CommentsList from '../components/comments-list.js';
+import CommentList from '../components/comments-list.js';
 
-import { remove, addNewComment, changeElForm } from '../actions';
+import { removeComment, addNewComment, changeElForm } from '../actions';
 
 let CommentApp = (props) => {
 	const {
-		newAuthor, newComment, comments, remove, addNewComment, changeElForm
+		newAuthor, newComment, comments, removeComment, addNewComment, changeElForm
 	} =props;
 
 	return (
 		<div>
 			<h1>Комментарии</h1>
-			<CommentsList comments = { comments } remove = { remove }/>
+			<CommentList comments = { comments } removeComment = { removeComment }/>
 
 			<CommentForm 
 				newAuthor = {newAuthor} 
@@ -28,16 +28,17 @@ let CommentApp = (props) => {
 }
 
 const mapStateToProps = (state) => {
+	const { comments, newAuthor, newComment } = state;
 	return {
-		comments: state.comments,
-		newAuthor: state.newAuthor,
-		newComment: state.newComment
+		comments,
+		newAuthor,
+		newComment
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		remove: ( id ) => dispatch(remove(id)),
+		removeComment: ( id ) => dispatch(removeComment(id)),
 		addNewComment: ( event ) => dispatch(addNewComment( event )),
 		changeElForm: ( event ) => dispatch(changeElForm( event))
 	}
@@ -49,3 +50,5 @@ CommentApp = connect(
 )(CommentApp);
 
 export default CommentApp;
+
+

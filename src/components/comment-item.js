@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CommentItem = (props) => {
-	const { id, author, text, date, remove } = props;
+	const { id, author, text, date, removeComment } = props;
 	return (
 		<li>
 			<article>
@@ -19,7 +19,7 @@ const CommentItem = (props) => {
 				</footer>				
 			</article>
 			<button class="deleteBtn"
-				onClick = { () => remove(id) }				
+				onClick = { () => removeComment(id) }				
 			>
 			Удалить
 			</button>			

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import CommentForm from '../components/comment-form.js';
 import CommentList from '../components/comments-list.js';
 
+import { isEmptyString } from '../actions/utils.js';
+
 import { removeComment, addNewComment, changeElForm } from '../actions';
 
 let CommentApp = (props) => {
@@ -37,9 +39,10 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
+	const { newAuthor, newComment } = state;
 	return {
-		removeComment: ( id ) => dispatch(removeComment(id)),
-		addNewComment: ( event ) => dispatch(addNewComment( event )),
+		removeComment: ( id ) => dispatch(removeComment( id )),
+		addNewComment: ( event ) => if (!(isEmptyString( newAuthor )) || !(isEmptyString( newComment ))) { dispatch(addNewComment( event ))} ,
 		changeElForm: ( event ) => dispatch(changeElForm( event))
 	}
 }

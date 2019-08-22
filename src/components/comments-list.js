@@ -1,6 +1,5 @@
 import React from 'react';
 import CommentItem from './comment-item';
-import { connect } from "react-redux";
 
 let CommentsList = (props) => {
 	const { comments, removeComment } = props;

@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from "react-redux";
 
 let CommentForm = (props) => {
 	const { newAuthor, newComment, addNewComment, changeElForm } = props;

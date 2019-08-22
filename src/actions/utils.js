@@ -12,7 +12,9 @@ function getDate() {
 }
 
 function isEmptyString(text){
-	return text.replace(/\s+/g," ").trim();
+	const replaceText = text.replace(/\s+/g," ").trim();
+	let result = (replaceText === '') ? true : false;
+	return result;
 }
 
 export {createId, getDate, isEmptyString};	

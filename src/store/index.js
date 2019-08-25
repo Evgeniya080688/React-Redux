@@ -13,7 +13,7 @@ const initialState = {
 	comments: comments || defaultComments,
 	newAuthor: '',
 	newComment: ''
-}
+};
 
 const store = createStore(reducer, initialState);
 

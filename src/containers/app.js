@@ -6,9 +6,9 @@ import CommentList from '../components/comments-list.js';
 
 import { isEmptyString } from '../actions/utils.js';
 
-import { removeComment, addNewComment, changeElForm } from '../actions';
+import { removeComment, addNewComment, changeElForm } from '../actions/index.js';
 
-let CommentApp = (props) => {
+let CommentApp = ( props ) => {
 	const {
 		newAuthor, newComment, comments, removeComment, addNewComment, changeElForm
 	} =props;
@@ -19,8 +19,8 @@ let CommentApp = (props) => {
 			<CommentList comments = { comments } removeComment = { removeComment }/>
 
 			<CommentForm 
-				newAuthor = {newAuthor} 
-				newComment = {newComment} 
+				newAuthor = { newAuthor } 
+				newComment = { newComment } 
 				addNewComment = { addNewComment } 
 				changeElForm = { changeElForm }
 			 />			
@@ -29,7 +29,7 @@ let CommentApp = (props) => {
 	)
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ( state ) => {
 	const { comments, newAuthor, newComment } = state;
 	return {
 		comments,
@@ -38,11 +38,15 @@ const mapStateToProps = (state) => {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = ( dispatch, state ) => {
 	const { newAuthor, newComment } = state;
 	return {
 		removeComment: ( id ) => dispatch(removeComment( id )),
-		addNewComment: ( event ) => if (!(isEmptyString( newAuthor )) || !(isEmptyString( newComment ))) { dispatch(addNewComment( event ))} ,
+		addNewComment: ( event ) => {
+			if (!(isEmptyString( newAuthor )) || !(isEmptyString( newComment ))) {
+				 dispatch(addNewComment( event ));
+			}			 
+		},
 		changeElForm: ( event ) => dispatch(changeElForm( event))
 	}
 }
@@ -53,5 +57,3 @@ CommentApp = connect(
 )(CommentApp);
 
 export default CommentApp;
-
-

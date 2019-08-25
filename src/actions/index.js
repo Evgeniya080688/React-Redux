@@ -1,7 +1,7 @@
 import { createId, getDate } from './utils.js';
 
 
-export const removeComment = (payload ) => {
+export const removeComment = ( payload ) => {
 	return {
 		type: 'REMOVE_COMMENT',
 		id: payload

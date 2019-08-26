@@ -8,7 +8,7 @@ export const removeComment = ( payload ) => {
 	}
 }
 
-export const addNewComment = ( payload ) => {
+export const addNewComment = ( payload, newAuthor, newComment) => {
 	return {
 		type: 'ADD_NEW_COMMENT',
 		id: createId(),

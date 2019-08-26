@@ -4,7 +4,7 @@ let CommentForm = (props) => {
 	const { newAuthor, newComment, addNewComment, changeElForm } = props;
 
 	return (
-		<form onSubmit={addNewComment} name="addNewComment">
+		<form onSubmit= { () => addNewComment( event, newAuthor, newComment) } name="addNewComment">
 			<h2>Добавь свой комментарий</h2>
 			<input 
 				type="text"

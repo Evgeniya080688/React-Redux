@@ -39,10 +39,9 @@ const mapStateToProps = ( state ) => {
 }
 
 const mapDispatchToProps = ( dispatch, state ) => {
-	const { newAuthor, newComment } = state;
 	return {
 		removeComment: ( id ) => dispatch(removeComment( id )),
-		addNewComment: ( event ) => {
+		addNewComment: ( event, newAuthor, newComment ) => {
 			if (!(isEmptyString( newAuthor )) || !(isEmptyString( newComment ))) {
 				 dispatch(addNewComment( event ));
 			}			 

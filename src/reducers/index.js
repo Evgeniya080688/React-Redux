@@ -7,24 +7,22 @@ const  reducer = ( state = {}, action ) => {
 		case REMOVE_COMMENT:
     		return {
 			...state,
-			comments: state.comments.filter( comment => comment.id !== action.id ) 
+			comments: state.comments.filter( comment => comment.id !== action.payload ) 
 			}
-			localStorage.setItem('comments', JSON.stringify(state.comments));
 
     	case ADD_NEW_COMMENT:
     		let { comments, newAuthor, newComment } = state;  
     		return {
     		...state,    		
-			comments: [...comments, { id: action.id, author: newAuthor, date: action.date , text: newComment}],
+			comments: [...comments, { id: action.payload.id, author: newAuthor, date: action.payload.date , text: newComment}],
 			newAuthor: '',
 	 		newComment: ''			
     		}  		
-			localStorage.setItem('comments', JSON.stringify(state.comments));
 
     	case CHANGE_EL_FORM:
     		return {
     		...state,
-    		[action.name]: action.value 
+    		[action.payload.name]: action.payload.value 
     		}
     		
     	default:

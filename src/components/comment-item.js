@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CommentItem = (props) => {
-	const { id, author, text, date, removeComment } = props;
+	const { id, author, text, date, removeComment, comments } = props;
 	return (
 		<li>
 			<article>
@@ -18,8 +18,12 @@ const CommentItem = (props) => {
 					</time>	
 				</footer>				
 			</article>
-			<button class="deleteBtn"
-				onClick = { () => removeComment(id) }				
+			<button class="deleteBtn" type="submit"
+				onClick = { () => {
+						removeComment(id);
+						localStorage.setItem('comments', JSON.stringify(comments));
+					}
+				}				
 			>
 			Удалить
 			</button>			

@@ -9,24 +9,31 @@ const isProduction = !isDevelopment;
 
 module.exports = {
 	mode: 'production',
-	entry: './src/index.js',
+	entry: {
+		main: './src/index.js',
+		// store: './src/store/index.js',
+		// reducers: './src/reducers/index.js',
+		// containers: './src/containers/app.js',
+		// actions: './src/actions/index.js',
+	},		
 	output: {
 		path: path.resolve(__dirname, 'build'),
 		filename: 'bundle.js'
   	},
+  	optimization: {
+	    splitChunks: {
+	      chunks: 'all'
+	    }
+	},
  	module: {
 	  	rules: [
 		    {
 		      	test: /\.m?js$/,
 		      	exclude: /(node_modules|bower_components)/,
 		      	use: {
-		        loader: 'babel-loader',
-		      }
+			        loader: 'babel-loader',
+			      }
 		    },
-		    // {
-		    //   	test: /\.css$/,
-		    //   	use: [MiniCssExtractPlugin.loader, 'css-loader'],
-		    // },
 		    {
 		    	test: /\.css$/,
 			    exclude: /node_modules/,

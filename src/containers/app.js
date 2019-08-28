@@ -7,6 +7,7 @@ import CommentList from '../components/comments-list.js';
 import { isEmptyString } from '../actions/utils.js';
 
 import { removeComment, addNewComment, changeElForm } from '../actions/index.js';
+import css from '../style.css';
 
 let CommentApp = ( props ) => {
 	const {
@@ -19,6 +20,7 @@ let CommentApp = ( props ) => {
 			<CommentList comments = { comments } removeComment = { removeComment }/>
 
 			<CommentForm 
+				comments = { comments}
 				newAuthor = { newAuthor } 
 				newComment = { newComment } 
 				addNewComment = { addNewComment } 
@@ -38,10 +40,10 @@ const mapStateToProps = ( state ) => {
 	}
 }
 
-const mapDispatchToProps = ( dispatch, state ) => {
+const mapDispatchToProps = ( dispatch ) => {
 	return {
 		removeComment: ( id ) => dispatch(removeComment( id )),
-		addNewComment: ( event, newAuthor, newComment ) => {
+		addNewComment: ( newAuthor, newComment ) => {
 			if (!(isEmptyString( newAuthor )) || !(isEmptyString( newComment ))) {
 				 dispatch(addNewComment( event ));
 			}			 

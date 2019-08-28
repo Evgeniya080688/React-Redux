@@ -1,10 +1,10 @@
 import React from 'react';
 
 let CommentForm = (props) => {
-	const { newAuthor, newComment, addNewComment, changeElForm } = props;
+	const { comments, newAuthor, newComment, addNewComment, changeElForm } = props;
 
 	return (
-		<form onSubmit= { () => addNewComment( event, newAuthor, newComment) } name="addNewComment">
+		<form onSubmit= { () => { event.preventDefault(); addNewComment( newAuthor, newComment); localStorage.setItem('comments', JSON.stringify( comments ) ); } } name="addNewComment">
 			<h2>Добавь свой комментарий</h2>
 			<input 
 				type="text"

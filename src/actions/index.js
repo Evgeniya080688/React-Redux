@@ -1,26 +1,31 @@
 import { createId, getDate } from './utils.js';
 
 
-export const removeComment = ( payload ) => {
+export const removeComment = ( id ) => {
 	return {
 		type: 'REMOVE_COMMENT',
-		id: payload
+		payload: id
 	}
 }
 
-export const addNewComment = ( payload, newAuthor, newComment) => {
+export const addNewComment = () => {
 	return {
 		type: 'ADD_NEW_COMMENT',
-		id: createId(),
-		date: getDate(),
-		prevent: payload.preventDefault()
+		payload: {
+			id: createId(),
+			date: getDate()			
+		}		
 	}
 }
 
-export const changeElForm = ( payload ) => {
+export const changeElForm = ( event ) => {
+	const { name, value } = event.target;
 	return {
 		type: 'CHANGE_EL_FORM',
-		name: payload.target.name,
-		value: payload.target.value
+		payload: {
+			name,
+			value
+		}
+		
 	}
 }

@@ -15,6 +15,7 @@ let CommentsList = (props) => {
 						text = { text }
 						date = { date }							
 						removeComment = { removeComment }
+						comments
 				/>
 				)
 			})
